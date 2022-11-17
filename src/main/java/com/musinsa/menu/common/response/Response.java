@@ -27,4 +27,7 @@ public class Response<T> {
 		return new Response(responseCode.getCode(), responseCode.getMessage(), data);
 	}
 
+	public static <T> Response<T> of(final ResponseCode responseCode, final String customMessage) {
+		return new Response(responseCode.getCode(), customMessage, null);
+	}
 }

@@ -1,5 +1,6 @@
 package com.musinsa.menu.domain.menu;
 
+import com.musinsa.menu.common.exception.InvalidParamException;
 import com.musinsa.menu.common.util.TokenGenerator;
 import com.musinsa.menu.domain.AbstractEntity;
 import com.musinsa.menu.domain.menu.banner.Banner;
@@ -19,6 +20,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.SQLDelete;
 
 @Getter
@@ -60,7 +62,10 @@ public class Menu extends AbstractEntity {
 			List<Menu> subMenus,
 			List<Banner> banners
 	) {
-		// TODO validation : topMenu가 있는데 banner가 있으면 안됨. 최상위 메뉴에만 배너를 추가할 수 있음
+		if (StringUtils.isEmpty(title)) throw new InvalidParamException("Menu.title");
+		if (ordering == null) throw new InvalidParamException("Menu.ordering");
+		if (topMenu != null && !banners.isEmpty()) throw new InvalidParamException("Order.banners");
+
 		this.menuToken = TokenGenerator.randomCharacterWithPrefix(MENU_PREFIX);
 		this.title = title;
 		this.ordering = ordering;

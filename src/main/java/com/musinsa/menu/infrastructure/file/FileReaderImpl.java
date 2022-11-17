@@ -1,8 +1,8 @@
 package com.musinsa.menu.infrastructure.file;
 
+import com.musinsa.menu.common.exception.EntityNotFoundException;
 import com.musinsa.menu.domain.file.File;
 import com.musinsa.menu.domain.file.FileReader;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

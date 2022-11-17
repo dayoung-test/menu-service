@@ -1,8 +1,8 @@
 package com.musinsa.menu.infrastructure.menu;
 
+import com.musinsa.menu.common.exception.EntityNotFoundException;
 import com.musinsa.menu.domain.menu.Menu;
 import com.musinsa.menu.domain.menu.MenuReader;
-import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
