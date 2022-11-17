@@ -1,7 +1,5 @@
 package com.musinsa.menu.domain.menu;
 
-import com.musinsa.menu.domain.menu.MenuInfo.Main;
-import com.musinsa.menu.domain.menu.banner.BannerStore;
 import com.musinsa.menu.domain.menu.banner.ItemBannerFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +26,7 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public Main retrieveMenuInfo(final String menuToken) {
+	public MenuInfo.Main retrieveMenuInfo(final String menuToken) {
 		return null;
 	}
 
