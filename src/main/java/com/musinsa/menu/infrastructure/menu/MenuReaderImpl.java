@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class MenuReaderImpl implements MenuReader {
 
 	private final MenuRepository menuRepository;
+	private final MenuQuerydslRepository menuQuerydslRepository;
 
 	@Override
 	public Menu getMenuBy(final String menuToken) {
@@ -26,6 +27,6 @@ public class MenuReaderImpl implements MenuReader {
 
 	@Override
 	public Menu getMenuWithSubMenuBy(final String menuToken) {
-		return null;
+		return menuQuerydslRepository.getMenuWithSubMenuBy(menuToken);
 	}
 }
