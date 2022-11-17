@@ -13,6 +13,7 @@ public class MenuServiceImpl implements MenuService {
 
 	private final MenuReader menuReader;
 	private final MenuStore menuStore;
+	private final MenuWriter menuWriter;
 	private final ItemBannerFactory itemBannerFactory;
 
 	@Override
@@ -32,8 +33,11 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
+	@Transactional
 	public void updateMenu(final MenuCommand.UpdateMenu command) {
-
+		var menu = menuReader.getMenuBy(command.getMenuToken());
+		var topMenu = menuReader.getMenuBy(command.getTopMenuToken());
+		menuWriter.updateMenu(menu, topMenu, command);
 	}
 
 	@Override

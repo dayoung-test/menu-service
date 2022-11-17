@@ -66,4 +66,19 @@ public class Menu extends AbstractEntity {
 		this.subMenus = subMenus;
 		this.banners = banners;
 	}
+
+
+	public void update(String title, Integer ordering, Menu topMenu) {
+		if (title != null && !this.title.equals(title)) {
+			this.title = title;
+		}
+
+		if (ordering != null && !this.ordering.equals(ordering)) {
+			this.ordering = ordering;
+		}
+
+		if (topMenu != null && !this.topMenu.getId().equals(topMenu.getId())) {
+			this.topMenu = topMenu;
+		}
+	}
 }
