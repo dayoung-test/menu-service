@@ -1,5 +1,6 @@
 package com.musinsa.menu.domain.menu;
 
+import com.musinsa.menu.common.util.TokenGenerator;
 import com.musinsa.menu.domain.AbstractEntity;
 import com.musinsa.menu.domain.menu.banner.Banner;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -35,7 +37,7 @@ public class Menu extends AbstractEntity {
 
 	private Integer ordering;
 
-	private boolean deleted = Boolean.FALSE;;
+	private boolean deleted = Boolean.FALSE;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "top_menu_id")
@@ -46,4 +48,22 @@ public class Menu extends AbstractEntity {
 
 	@OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
 	private List<Banner> banners = new ArrayList<>();
+
+
+	@Builder
+	public Menu(
+			String title,
+			Integer ordering,
+			Menu topMenu,
+			List<Menu> subMenus,
+			List<Banner> banners
+	) {
+		// TODO validation : topMenu가 있는데 banner가 있으면 안됨. 최상위 메뉴에만 배너를 추가할 수 있음
+		this.menuToken = TokenGenerator.randomCharacterWithPrefix(MENU_PREFIX);
+		this.title = title;
+		this.ordering = ordering;
+		this.topMenu = topMenu;
+		this.subMenus = subMenus;
+		this.banners = banners;
+	}
 }

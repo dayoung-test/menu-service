@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -39,4 +40,11 @@ public class Banner extends AbstractEntity {
 	@OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "file_id")
 	private File file;
+
+	@Builder
+	public Banner(Integer ordering, Menu menu, File file) {
+		this.ordering = ordering;
+		this.menu = menu;
+		this.file = file;
+	}
 }
