@@ -47,7 +47,9 @@ public class MenuController {
 		return Response.of();
 	}
 
-	@DeleteMapping()
-	public void delete() {
+	@DeleteMapping("/{menuToken}")
+	public Response delete(@PathVariable("menuToken") String menuToken) {
+		menuFacade.deleteMenu(menuToken);
+		return Response.of();
 	}
 }
