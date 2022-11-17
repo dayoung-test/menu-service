@@ -16,8 +16,8 @@ public class MenuCommand {
 		private String topMenuToken;
 		private String title;
 		private Integer ordering;
-		private List<RegisterMenu> subMenuList;
-		private List<RegisterBanner> bannerList;
+		private List<RegisterMenu> subMenuCommandList;
+		private List<RegisterBanner> bannerCommandList;
 
 		public Menu toEntity(Menu topMenu) {
 			return Menu.builder()
