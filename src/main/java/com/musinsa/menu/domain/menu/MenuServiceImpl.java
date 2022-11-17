@@ -32,7 +32,7 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public void updateMenu(final String menuToken) {
+	public void updateMenu(final MenuCommand.UpdateMenu command) {
 
 	}
 

@@ -6,7 +6,7 @@ public interface MenuService {
 
 	MenuInfo.Main retrieveMenuInfo(String menuToken);
 
-	void updateMenu(String menuToken);
+	void updateMenu(MenuCommand.UpdateMenu command);
 
 	void deleteMenu(String menuToken);
 

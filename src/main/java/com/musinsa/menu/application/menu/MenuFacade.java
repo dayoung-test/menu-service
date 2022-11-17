@@ -14,11 +14,15 @@ public class MenuFacade {
 
 	private final MenuService menuService;
 
-	public String registerMenu(MenuCommand.RegisterMenu request) {
-		return menuService.registerMenu(request);
+	public String registerMenu(MenuCommand.RegisterMenu command) {
+		return menuService.registerMenu(command);
 	}
 
 	public Main retrieveMenuInfo(String menuToken) {
 		return menuService.retrieveMenuInfo(menuToken);
+	}
+
+	public void updateMenu(MenuCommand.UpdateMenu command) {
+		menuService.updateMenu(command);
 	}
 }
