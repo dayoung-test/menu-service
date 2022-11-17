@@ -27,7 +27,8 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public MenuInfo.Main retrieveMenuInfo(final String menuToken) {
-		return null;
+		var menu = menuReader.getMenuWithSubMenuBy(menuToken);
+		return new MenuInfo.Main(menu);
 	}
 
 	@Override

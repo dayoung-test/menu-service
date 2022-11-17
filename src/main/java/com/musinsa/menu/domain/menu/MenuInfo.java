@@ -19,15 +19,17 @@ public class MenuInfo {
 		private final List<Main> subMenuList;
 		private final List<BannerInfo> bannerList;
 
-		public Main(Menu menu, List<BannerInfo> bannerInfoList) {
+		public Main(Menu menu) {
 			this.id = menu.getId();
 			this.menuToken = menu.getMenuToken();
 			this.title = menu.getTitle();
 			this.ordering = menu.getOrdering();
 			this.subMenuList = menu.getSubMenus().stream()
-					.map(subMenu -> new Main(subMenu, new ArrayList<>()))
+					.map(Main::new)
 					.collect(Collectors.toList());
-			this.bannerList = bannerInfoList;
+			this.bannerList = menu.getBanners().stream()
+					.map(BannerInfo::new)
+					.collect(Collectors.toList());
 		}
 	}
 
