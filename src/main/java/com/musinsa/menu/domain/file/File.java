@@ -1,5 +1,6 @@
 package com.musinsa.menu.domain.file;
 
+import com.musinsa.menu.common.util.TokenGenerator;
 import com.musinsa.menu.domain.AbstractEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -39,5 +41,12 @@ public class File extends AbstractEntity {
 	@RequiredArgsConstructor
 	public enum Type {
 		IMAGE
+	}
+
+	@Builder
+	public File(String url, Type type) {
+		this.fileToken = TokenGenerator.randomCharacterWithPrefix(FILE_PREFIX);
+		this.url = "http://url"; // 임시로 처리
+		this.type = Type.IMAGE;  // 임시로 처리
 	}
 }
