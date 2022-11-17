@@ -41,7 +41,10 @@ public class MenuController {
 	}
 
 	@PutMapping
-	public void edit() {
+	public Response edit(@RequestBody @Valid MenuDto.UpdateMenuRequest request) {
+		var menuCommand = menuDtoMapper.of(request);
+		menuFacade.updateMenu(menuCommand);
+		return Response.of();
 	}
 
 	@DeleteMapping()

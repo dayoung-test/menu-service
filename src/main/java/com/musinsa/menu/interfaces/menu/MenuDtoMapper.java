@@ -63,4 +63,8 @@ public class MenuDtoMapper {
 				.bannerList(bannerInfoResponse)
 				.build();
 	}
+
+	public MenuCommand.UpdateMenu of(MenuDto.UpdateMenuRequest request) {
+		return MenuCommand.UpdateMenu.of(request.getMenuToken(), request.getTopMenuToken(), request.getTitle(), request.getOrdering());
+	}
 }

@@ -1,6 +1,7 @@
 package com.musinsa.menu.interfaces.menu;
 
 import java.util.List;
+import javax.validation.Valid;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -51,5 +52,16 @@ public class MenuDto {
 	public static class BannerInfoResponse {
 		private final String url;
 		private final Integer ordering;
+	}
+
+	@Getter
+	@Setter
+	@ToString
+	@Valid
+	public static class UpdateMenuRequest {
+		private String menuToken;
+		private String topMenuToken;
+		private String title;
+		private Integer ordering;
 	}
 }
