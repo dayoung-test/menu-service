@@ -1,0 +1,41 @@
+package com.musinsa.menu.domain.file;
+
+import com.musinsa.menu.domain.AbstractEntity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class File extends AbstractEntity {
+
+	private static final String FILE_PREFIX = "file_";
+
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "file_id")
+	private Long id;
+
+	private String fileToken;
+
+	private String url;
+
+	@Enumerated(EnumType.STRING)
+	private Type type;
+
+	private boolean deleted = Boolean.FALSE;
+
+	@Getter
+	@RequiredArgsConstructor
+	public enum Type {
+		IMAGE
+	}
+}
