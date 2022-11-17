@@ -2,12 +2,14 @@ package com.musinsa.menu.interfaces.menu;
 
 import com.musinsa.menu.application.menu.MenuFacade;
 import com.musinsa.menu.common.response.Response;
+import com.musinsa.menu.interfaces.menu.MenuDto.MenuInfoResponse;
 import com.musinsa.menu.interfaces.menu.MenuDto.RegisterMenuResponse;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +33,11 @@ public class MenuController {
 		return Response.of(response);
 	}
 
-	@GetMapping
-	public void retrieveWithSubMenu() {
+	@GetMapping("/{menuToken}")
+	public Response<MenuInfoResponse> retrieveWithSubMenu(@PathVariable("menuToken") String menuToken) {
+		var menuInfo = menuFacade.retrieveMenuInfo(menuToken);
+		var response = menuDtoMapper.of(menuInfo);
+		return Response.of(response);
 	}
 
 	@PutMapping

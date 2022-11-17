@@ -33,4 +33,23 @@ public class MenuDto {
 	public static class RegisterMenuResponse {
 		private final String menuToken;
 	}
+
+	@Getter
+	@Builder
+	@ToString
+	public static class MenuInfoResponse {
+		private final String menuToken;
+		private final String title;
+		private final Integer ordering;
+		private final List<MenuDto.MenuInfoResponse> subMenuList;
+		private final List<MenuDto.BannerInfoResponse> bannerList;
+	}
+
+	@Getter
+	@Builder
+	@ToString
+	public static class BannerInfoResponse {
+		private final String url;
+		private final Integer ordering;
+	}
 }
