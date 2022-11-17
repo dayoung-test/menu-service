@@ -1,0 +1,31 @@
+package com.musinsa.menu.infrastructure.menu;
+
+import com.musinsa.menu.domain.menu.Menu;
+import com.musinsa.menu.domain.menu.MenuReader;
+import javax.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Component
+@RequiredArgsConstructor
+public class MenuReaderImpl implements MenuReader {
+
+	private final MenuRepository menuRepository;
+
+	@Override
+	public Menu getMenuBy(final String menuToken) {
+		if (StringUtils.isEmpty(menuToken)) {
+			return null;
+		}
+		return menuRepository.findByMenuToken(menuToken)
+				.orElseThrow(EntityNotFoundException::new);
+	}
+
+	@Override
+	public Menu getMenuWithSubMenuBy(final String menuToken) {
+		return null;
+	}
+}
