@@ -19,9 +19,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 @Getter
 @Entity
+@SQLDelete(sql = "UPDATE menu SET deleted = true WHERE menu_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Menu extends AbstractEntity {
 

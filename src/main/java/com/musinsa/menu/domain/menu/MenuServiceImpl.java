@@ -42,6 +42,7 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public void deleteMenu(final String menuToken) {
-
+		var menu = menuReader.getMenuBy(menuToken);
+		menuWriter.deleteMenu(menu);
 	}
 }

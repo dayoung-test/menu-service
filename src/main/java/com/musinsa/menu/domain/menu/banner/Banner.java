@@ -19,9 +19,11 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 @Getter
 @Entity
+@SQLDelete(sql = "UPDATE banner SET deleted = true WHERE banner_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Banner extends AbstractEntity {
 
@@ -31,7 +33,7 @@ public class Banner extends AbstractEntity {
 
 	private Integer ordering;
 
-	private boolean deleted = Boolean.FALSE;;
+	private boolean deleted = Boolean.FALSE;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "menu_id")

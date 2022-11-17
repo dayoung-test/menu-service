@@ -12,9 +12,11 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
 
 @Getter
 @Entity
+@SQLDelete(sql = "UPDATE file SET deleted = true WHERE file_id = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class File extends AbstractEntity {
 
