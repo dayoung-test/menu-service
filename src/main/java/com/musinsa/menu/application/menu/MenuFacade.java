@@ -25,4 +25,8 @@ public class MenuFacade {
 	public void updateMenu(MenuCommand.UpdateMenu command) {
 		menuService.updateMenu(command);
 	}
+
+	public void deleteMenu(String menuToken) {
+		menuService.deleteMenu(menuToken);
+	}
 }
