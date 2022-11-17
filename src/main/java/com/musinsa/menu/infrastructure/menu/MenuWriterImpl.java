@@ -12,9 +12,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class MenuWriterImpl implements MenuWriter {
 
+	private final MenuRepository menuRepository;
+
 	@Override
 	public void deleteMenu(final Menu menu) {
-
+		menuRepository.delete(menu);
 	}
 
 	@Override
